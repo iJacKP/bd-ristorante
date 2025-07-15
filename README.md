@@ -6,7 +6,7 @@ Este projeto é um sistema simples para gerenciamento de um restaurante, desenvo
 ---
 
 ## 🛠️ Tecnologias
-- **Python 3.10+**
+- **Pytho3.10+**
 - **Flask**
 - **PostgreSQL 14+**
 - **Pipenv ou virtualenv (opcional)**
@@ -30,42 +30,56 @@ restaurante/
 
 ### 1️⃣ Clone o repositório:
 
+```bash
 git clone <https://github.com/iJacKP/bd-ristorante.git>
 cd bd-ristorante
+```
+
 
 ### 2️⃣ Crie e ative um ambiente virtual:
 
+```bash
 python3 -m venv .venv
 source .venv/bin/activate  # Linux/macOS
 .venv\Scripts\activate     # Windows
-
+```
 
 ### 2️⃣ Instale as dependências
 
+```bash
 pip install -r requirements.txt
+```
 
 ### 3️⃣ Crie o banco de dados no PostgreSQL
 
+```bash
 psql -U postgres
 CREATE DATABASE ristorante;
 \q
+```
 
 ### 4️⃣ Importe o script do banco
 
+```bash
 psql -U postgres -d ristorante -f database.sql
+```
 
 ### 5️⃣ Configure o usuário e senha no arquivo app.py
 
+```bash
 db_config = {
     "host": "localhost",
     "database": "ristorante",
     "user": "seu_usuario",
     "password": "sua_senha"
 }
+```
 
 ### 6️⃣ Rode a API
 
-python app.py
+```bash
+pythoapp.py
+```
 
 ### A API estará disponível em:
 📍 http://127.0.0.1:5000/
@@ -73,132 +87,280 @@ python app.py
 ### 📖 Endpoints da API
 
 ⸻
+## Referências da API 
 
 ### 🧑‍🍳 Clientes
 
-📥 Listar clientes
+#### Buscar clientes
 
-================================
-📖 Endpoints da API
-===============================
-
-🧑‍🍳 CLIENTES
--------------------------------
-
-📥 Listar clientes
+```http
 GET /clientes
-Query SQL:
-SELECT * FROM cliente;
+```
 
-📥 Adicionar cliente
+| Paramêtro | Tipo | Descrição                |
+| :-------- | :----| :---------------------------|
+| _None_    |      | Retorna todos os clientes.  |
+
+---
+
+#### Adicionar cliente
+
+```http
 POST /clientes
-Query SQL:
-INSERT INTO cliente (nome, email) VALUES (%s, %s);
+```
 
-📥 Atualizar cliente
-PUT /clientes/<id>
-Query SQL:
-UPDATE cliente SET nome=%s, email=%s WHERE id_cliente=%s;
+| Body Paramêtro | Tipo     | Descrição                  |
+| :------------- | :------- | :----------------------------|
+| `nome`         | `string` | **Required**. Nome do cliente|
+| `email`        | `string` | **Required**. Email do cliente|
 
-📥 Deletar cliente
-DELETE /clientes/<id>
-Query SQL:
-DELETE FROM cliente WHERE id_cliente=%s;
+---
 
+#### Atualizar cliente
 
-🗂️ CATEGORIAS
--------------------------------
+```http
+PUT /clientes/${id}
+```
 
-📥 Listar categorias
+| Paramêtro | Tipo  | Descrição               |
+| :-------- | :-----| :-------------------------|
+| `id`      | `int` | **Required**. ID do cliente|
+
+| Body Paramêtro | Tipo     | Descrição                  |
+| :------------- | :------- | :----------------------------|
+| `nome`         | `string` | **Required**. Novo nome       |
+| `email`        | `string` | **Required**. Novo email      |
+
+---
+
+#### Deletar cliente
+
+```http
+DELETE /clientes/${id}
+```
+
+| Paramêtro | Tipo  | Descrição               |
+| :-------- | :-----| :-------------------------|
+| `id`      | `int` | **Required**. ID do cliente|
+
+---
+
+### 🗂️ Categorias
+
+#### Buscar categorias
+
+```http
 GET /categorias
-Query SQL:
-SELECT * FROM categoria;
+```
 
-📥 Adicionar categoria
+| Paramêtro | Tipo | Descrição                   |
+| :-------- | :----| :-----------------------------|
+| _None_    |      | Retorna todas as categorias.  |
+
+---
+
+#### Adicionar categoria
+
+```http
 POST /categorias
-Query SQL:
-INSERT INTO categoria (nome) VALUES (%s);
+```
 
-📥 Atualizar categoria
-PUT /categorias/<id>
-Query SQL:
-UPDATE categoria SET nome=%s WHERE id_categoria=%s;
+| Body Paramêtro | Tipo     | Descrição                     |
+| :------------- | :------- | :--------------------------------|
+| `nome`         | `string` | **Required**. Nome da categoria. |
 
-📥 Deletar categoria
-DELETE /categorias/<id>
-Query SQL:
-DELETE FROM categoria WHERE id_categoria=%s;
+---
 
+#### Atualizar categoria
 
-🍝 PRODUTOS
--------------------------------
+```http
+PUT /categorias/${id}
+```
 
-📥 Listar produtos
+| Paramêtro | Tipo  | Descrição                 |
+| :-------- | :-----| :---------------------------|
+| `id`      | `int` | **Required**. ID da categoria|
+
+| Body Paramêtro | Tipo     | Descrição                 |
+| :------------- | :------- | :----------------------------|
+| `nome`         | `string` | **Required**. Novo nome       |
+
+---
+
+#### Deletar categoria
+
+```http
+DELETE /categorias/${id}
+```
+
+| Paramêtro | Tipo  | Descrição                 |
+| :-------- | :-----| :---------------------------|
+| `id`      | `int` | **Required**. ID da categoria|
+
+---
+
+### 🍝 Produtos
+
+#### Buscar produtos
+
+```http
 GET /produtos
-Query SQL:
-SELECT * FROM produto;
+```
 
-📥 Adicionar produto
+| Paramêtro | Tipo | Descrição                |
+| :-------- | :----| :---------------------------|
+| _None_    |      | Retorna todos os produtos.  |
+
+---
+
+#### Adicionar produto
+
+```http
 POST /produtos
-Query SQL:
-INSERT INTO produto (nome, preco, id_categoria) VALUES (%s, %s, %s);
+```
 
-📥 Atualizar produto
-PUT /produtos/<id>
-Query SQL:
-UPDATE produto SET nome=%s, preco=%s, id_categoria=%s WHERE id_produto=%s;
+| Body Paramêtro | Tipo     | Descrição                     |
+| :------------- | :------- | :--------------------------------|
+| `nome`         | `string` | **Required**. Nome do produto    |
+| `preco`        | `float`  | **Required**. Preço do produto   |
+| `id_categoria` | `int`    | **Required**. ID da categoria    |
 
-📥 Deletar produto
-DELETE /produtos/<id>
-Query SQL:
-DELETE FROM produto WHERE id_produto=%s;
+---
 
+#### Atualizar produto
 
-📝 PEDIDOS
--------------------------------
+```http
+PUT /produtos/${id}
+```
 
-📥 Listar pedidos
+| Paramêtro | Tipo  | Descrição                 |
+| :-------- | :-----| :---------------------------|
+| `id`      | `int` | **Required**. ID do produto  |
+
+| Body Paramêtro | Tipo     | Descrição                     |
+| :------------- | :------- | :--------------------------------|
+| `nome`         | `string` | **Required**. Novo nome          |
+| `preco`        | `float`  | **Required**. Novo preço         |
+| `id_categoria` | `int`    | **Required**. Nova categoria     |
+
+---
+
+#### Deletar produto
+
+```http
+DELETE /produtos/${id}
+```
+
+| Paramêtro | Tipo  | Descrição                 |
+| :-------- | :-----| :---------------------------|
+| `id`      | `int` | **Required**. ID do produto  |
+
+---
+
+### 📝 Pedidos
+
+#### Buscar pedidos
+
+```http
 GET /pedidos
-Query SQL:
-SELECT * FROM pedido;
+```
 
-📥 Adicionar pedido
+| Paramêtro | Tipo | Descrição                |
+| :-------- | :----| :---------------------------|
+| _None_    |      | Retorna todos os pedidos.   |
+
+---
+
+#### Adicionar pedido
+
+```http
 POST /pedidos
-Query SQL:
-INSERT INTO pedido (id_cliente) VALUES (%s);
+```
 
-📥 Atualizar pedido
-PUT /pedidos/<id>
-Query SQL:
-UPDATE pedido SET id_cliente=%s WHERE id_pedido=%s;
+| Body Paramêtro | Tipo     | Descrição                     |
+| :------------- | :------- | :--------------------------------|
+| `id_cliente`   | `int`    | **Required**. ID do cliente      |
 
-📥 Deletar pedido
-DELETE /pedidos/<id>
-Query SQL:
-DELETE FROM pedido WHERE id_pedido=%s;
+---
 
+#### Atualizar pedido
 
-🍽️ ITENS DO PEDIDO
--------------------------------
+```http
+PUT /pedidos/${id}
+```
 
-📥 Listar itens do pedido
+| Paramêtro | Tipo  | Descrição                |
+| :-------- | :-----| :--------------------------|
+| `id`      | `int` | **Required**. ID do pedido  |
+
+| Body Paramêtro | Tipo     | Descrição                     |
+| :------------- | :------- | :--------------------------------|
+| `id_cliente`   | `int`    | **Required**. Novo cliente       |
+
+---
+
+#### Deletar pedido
+
+```http
+DELETE /pedidos/${id}
+```
+
+| Paramêtro | Tipo  | Descrição                |
+| :-------- | :-----| :--------------------------|
+| `id`      | `int` | **Required**. ID do pedido  |
+
+---
+
+### 🍽️ Itens do Pedido
+
+#### Buscar itens do pedido
+
+```http
 GET /itens_pedido
-Query SQL:
-SELECT * FROM item_pedido;
+```
 
-📥 Adicionar item ao pedido
+| Paramêtro | Tipo | Descrição                      | Query
+| :-------- | :----| :----------------------------------|
+| _None_    |      | Retorna todos os itens dos pedidos|
+
+---
+
+#### Adicionar itens do pedido
+
+```http
 POST /itens_pedido
-Query SQL:
-INSERT INTO item_pedido (quantidade, id_pedido, id_produto) VALUES (%s, %s, %s);
+```
 
-📥 Atualizar item do pedido
-PUT /itens_pedido/<id>
-Query SQL:
-UPDATE item_pedido SET quantidade=%s WHERE id_item=%s;
+| Body Paramêtro | Tipo     | Descrição                          |
+| :------------- | :------- | :-------------------------------------|
+| `quantidade`   | `int`    | **Required**. Quantidade do item      |
+| `id_pedido`    | `int`    | **Required**. ID do pedido            |
+| `id_produto`   | `int`    | **Required**. ID do produto           |
 
-📥 Deletar item do pedido
-DELETE /itens_pedido/<id>
-Query SQL:
-DELETE FROM item_pedido WHERE id_item=%s;
+---
 
-===============================
+#### Atualizar itens do pedido
+
+```http
+PUT /itens_pedido/${id}
+```
+
+| Paramêtro | Tipo  | Descrição                       |
+| :-------- | :-----| :-----------------------------------|
+| `id`      | `int` | **Required**. ID do item do pedido |
+
+| Body Paramêtro | Tipo     | Descrição                          |
+| :------------- | :------- | :-------------------------------------|
+| `quantidade`   | `int`    | **Required**. Nova quantidade         |
+
+---
+
+#### Deletar itens do pedido
+
+```http
+DELETE /itens_pedido/${id}
+```
+
+| Paramêtro | Tipo  | Descrição                       |
+| :-------- | :-----| :-----------------------------------|
+| `id`      | `int` | **Required**. ID do item do pedido |
