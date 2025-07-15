@@ -1,7 +1,7 @@
-# 🍔 Sistema de Restaurante - Trabalho Final de Banco de Dados
+# 🍔 BD Ristorante - Trabalho Prático - Banco de Dados
 
 ## 📖 Descrição
-Este projeto é um sistema simples para gerenciamento de um restaurante, desenvolvido como Trabalho Prático da disciplina de Banco de Dados. A aplicação permite o gerenciamento de clientes, produtos, categorias e pedidos, realizando operações no banco de dados relacional.
+Este projeto é uma API simples para gerenciamento de um restaurante, desenvolvido como Trabalho Prático da disciplina de Banco de Dados. A aplicação permite o gerenciamento de clientes, produtos, categorias e pedidos, realizando operações no banco de dados relacional.
 
 ---
 
