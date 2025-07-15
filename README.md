@@ -16,13 +16,15 @@ Este projeto é uma API simples para gerenciamento de um restaurante, desenvolvi
 
 ## 📦 Estrutura do Projeto
 
-restaurante/
+```bash
+bd-ristorante/
 ├── app.py             # Código principal Flask
 ├── requirements.txt   # Dependências Python
 ├── database.sql       # Script DDL do banco
 ├── mer.png            # Modelo Entidade-Relacionamento
 ├── integrantes.txt    # Nomes da equipe
 └── README.md          # Este arquivo
+```
 
 ---
 
