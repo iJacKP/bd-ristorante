@@ -109,7 +109,7 @@ GET /clientes
 POST /clientes
 ```
 
-| Body Paramêtro | Tipo     | Descrição                  |
+| Body | Tipo     | Descrição                  |
 | :------------- | :------- | :----------------------------|
 | `nome`         | `string` | **Required**. Nome do cliente|
 | `email`        | `string` | **Required**. Email do cliente|
@@ -126,7 +126,7 @@ PUT /clientes/${id}
 | :-------- | :-----| :-------------------------|
 | `id`      | `int` | **Required**. ID do cliente|
 
-| Body Paramêtro | Tipo     | Descrição                  |
+| Body | Tipo     | Descrição                  |
 | :------------- | :------- | :----------------------------|
 | `nome`         | `string` | **Required**. Novo nome       |
 | `email`        | `string` | **Required**. Novo email      |
@@ -165,7 +165,7 @@ GET /categorias
 POST /categorias
 ```
 
-| Body Paramêtro | Tipo     | Descrição                     |
+| Body | Tipo     | Descrição                     |
 | :------------- | :------- | :--------------------------------|
 | `nome`         | `string` | **Required**. Nome da categoria. |
 
@@ -181,7 +181,7 @@ PUT /categorias/${id}
 | :-------- | :-----| :---------------------------|
 | `id`      | `int` | **Required**. ID da categoria|
 
-| Body Paramêtro | Tipo     | Descrição                 |
+| Body | Tipo     | Descrição                 |
 | :------------- | :------- | :----------------------------|
 | `nome`         | `string` | **Required**. Novo nome       |
 
@@ -219,7 +219,7 @@ GET /produtos
 POST /produtos
 ```
 
-| Body Paramêtro | Tipo     | Descrição                     |
+| Body | Tipo     | Descrição                     |
 | :------------- | :------- | :--------------------------------|
 | `nome`         | `string` | **Required**. Nome do produto    |
 | `preco`        | `float`  | **Required**. Preço do produto   |
@@ -237,7 +237,7 @@ PUT /produtos/${id}
 | :-------- | :-----| :---------------------------|
 | `id`      | `int` | **Required**. ID do produto  |
 
-| Body Paramêtro | Tipo     | Descrição                     |
+| Body | Tipo     | Descrição                     |
 | :------------- | :------- | :--------------------------------|
 | `nome`         | `string` | **Required**. Novo nome          |
 | `preco`        | `float`  | **Required**. Novo preço         |
@@ -277,7 +277,7 @@ GET /pedidos
 POST /pedidos
 ```
 
-| Body Paramêtro | Tipo     | Descrição                     |
+| Body | Tipo     | Descrição                     |
 | :------------- | :------- | :--------------------------------|
 | `id_cliente`   | `int`    | **Required**. ID do cliente      |
 
@@ -293,7 +293,7 @@ PUT /pedidos/${id}
 | :-------- | :-----| :--------------------------|
 | `id`      | `int` | **Required**. ID do pedido  |
 
-| Body Paramêtro | Tipo     | Descrição                     |
+| Body | Tipo     | Descrição                     |
 | :------------- | :------- | :--------------------------------|
 | `id_cliente`   | `int`    | **Required**. Novo cliente       |
 
@@ -331,7 +331,7 @@ GET /itens_pedido
 POST /itens_pedido
 ```
 
-| Body Paramêtro | Tipo     | Descrição                          |
+| Body | Tipo     | Descrição                          |
 | :------------- | :------- | :-------------------------------------|
 | `quantidade`   | `int`    | **Required**. Quantidade do item      |
 | `id_pedido`    | `int`    | **Required**. ID do pedido            |
@@ -349,7 +349,7 @@ PUT /itens_pedido/${id}
 | :-------- | :-----| :-----------------------------------|
 | `id`      | `int` | **Required**. ID do item do pedido |
 
-| Body Paramêtro | Tipo     | Descrição                          |
+| Body | Tipo     | Descrição                          |
 | :------------- | :------- | :-------------------------------------|
 | `quantidade`   | `int`    | **Required**. Nova quantidade         |
 
