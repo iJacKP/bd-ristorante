@@ -33,7 +33,7 @@ bd-ristorante/
 ### 1️⃣ Clone o repositório:
 
 ```bash
-git clone <https://github.com/iJacKP/bd-ristorante.git>
+git clone https://github.com/iJacKP/bd-ristorante.git
 cd bd-ristorante
 ```
 
@@ -41,7 +41,7 @@ cd bd-ristorante
 ### 2️⃣ Crie e ative um ambiente virtual:
 
 ```bash
-python3 -m venv .venv
+python -m venv .venv
 source .venv/bin/activate  # Linux/macOS
 .venv\Scripts\activate     # Windows
 ```
