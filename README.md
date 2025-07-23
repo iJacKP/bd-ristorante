@@ -80,7 +80,7 @@ db_config = {
 ### 6️⃣ Rode a API
 
 ```bash
-pythoapp.py
+python app.py
 ```
 
 ### A API estará disponível em:
