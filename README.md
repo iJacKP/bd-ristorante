@@ -91,6 +91,16 @@ python app.py
 ⸻
 ## Referências da API 
 
+### 🏁 Rota Inicial
+
+```http
+GET /
+```
+
+| Paramêtro | Tipo | Descrição                | Query |
+| :-------- | :----| :---------------------------| ---------------------- |
+| _None_    |  Retorna uma mensagem simples. | None – apenas retorna JSON {"mensagem": "API está rodando!"} |
+
 ### 🧑‍🍳 Clientes
 
 #### Buscar clientes
@@ -99,9 +109,9 @@ python app.py
 GET /clientes
 ```
 
-| Paramêtro | Tipo | Descrição                |
-| :-------- | :----| :---------------------------|
-| _None_    |      | Retorna todos os clientes.  |
+| Paramêtro | Tipo | Descrição                | Query |
+| :-------- | :----| :---------------------------|---------------------- |
+| _None_    |      | Retorna todos os clientes.  | SELECT * FROM clientes |
 
 ---
 
@@ -111,9 +121,9 @@ GET /clientes
 POST /clientes
 ```
 
-| Body | Tipo     | Descrição                  |
-| :------------- | :------- | :----------------------------|
-| `nome`         | `string` | **Required**. Nome do cliente|
+| Body | Tipo     | Descrição                  | Query |
+| :------------- | :------- | :----------------------------| ---------------------- |
+| `nome`         | `string` | **Required**. Nome do cliente| INSERT INTO clientes (nome, email) VALUES (?, ?) |
 | `email`        | `string` | **Required**. Email do cliente|
 
 ---
@@ -124,9 +134,9 @@ POST /clientes
 PUT /clientes/${id}
 ```
 
-| Paramêtro | Tipo  | Descrição               |
-| :-------- | :-----| :-------------------------|
-| `id`      | `int` | **Required**. ID do cliente|
+| Paramêtro | Tipo  | Descrição               | Query |
+| :-------- | :-----| :-------------------------| ---------------------- |
+| `id`      | `int` | **Required**. ID do cliente| UPDATE clientes SET nome = ?, email = ? WHERE id = ? |
 
 | Body | Tipo     | Descrição                  |
 | :------------- | :------- | :----------------------------|
@@ -141,9 +151,9 @@ PUT /clientes/${id}
 DELETE /clientes/${id}
 ```
 
-| Paramêtro | Tipo  | Descrição               |
-| :-------- | :-----| :-------------------------|
-| `id`      | `int` | **Required**. ID do cliente|
+| Paramêtro | Tipo  | Descrição               | Query |
+| :-------- | :-----| :-------------------------| ---------------------- |
+| `id`      | `int` | **Required**. ID do cliente| DELETE FROM clientes WHERE id = ? |
 
 ---
 
@@ -155,9 +165,9 @@ DELETE /clientes/${id}
 GET /categorias
 ```
 
-| Paramêtro | Tipo | Descrição                   |
-| :-------- | :----| :-----------------------------|
-| _None_    |      | Retorna todas as categorias.  |
+| Paramêtro | Tipo | Descrição                   | Query |
+| :-------- | :----| :-----------------------------| ---------------------- |
+| _None_    |      | Retorna todas as categorias.  | SELECT * FROM categorias |
 
 ---
 
@@ -167,9 +177,9 @@ GET /categorias
 POST /categorias
 ```
 
-| Body | Tipo     | Descrição                     |
-| :------------- | :------- | :--------------------------------|
-| `nome`         | `string` | **Required**. Nome da categoria. |
+| Body | Tipo     | Descrição                     | Query |
+| :------------- | :------- | :--------------------------------| ---------------------- |
+| `nome`         | `string` | **Required**. Nome da categoria. | INSERT INTO categorias (nome) VALUES (?) |
 
 ---
 
@@ -179,9 +189,9 @@ POST /categorias
 PUT /categorias/${id}
 ```
 
-| Paramêtro | Tipo  | Descrição                 |
-| :-------- | :-----| :---------------------------|
-| `id`      | `int` | **Required**. ID da categoria|
+| Paramêtro | Tipo  | Descrição                 |Query |
+| :-------- | :-----| :---------------------------| ---------------------- |
+| `id`      | `int` | **Required**. ID da categoria| UPDATE categorias SET nome = ? WHERE id = ? |
 
 | Body | Tipo     | Descrição                 |
 | :------------- | :------- | :----------------------------|
@@ -195,9 +205,9 @@ PUT /categorias/${id}
 DELETE /categorias/${id}
 ```
 
-| Paramêtro | Tipo  | Descrição                 |
-| :-------- | :-----| :---------------------------|
-| `id`      | `int` | **Required**. ID da categoria|
+| Paramêtro | Tipo  | Descrição                 | Query |
+| :-------- | :-----| :---------------------------| ---------------------- |
+| `id`      | `int` | **Required**. ID da categoria| DELETE FROM categorias WHERE id = ? |
 
 ---
 
@@ -209,9 +219,9 @@ DELETE /categorias/${id}
 GET /produtos
 ```
 
-| Paramêtro | Tipo | Descrição                |
-| :-------- | :----| :---------------------------|
-| _None_    |      | Retorna todos os produtos.  |
+| Paramêtro | Tipo | Descrição                | Query |
+| :-------- | :----| :---------------------------| ---------------------- |
+| _None_    |      | Retorna todos os produtos.  | SELECT * FROM produtos |
 
 ---
 
@@ -221,9 +231,9 @@ GET /produtos
 POST /produtos
 ```
 
-| Body | Tipo     | Descrição                     |
-| :------------- | :------- | :--------------------------------|
-| `nome`         | `string` | **Required**. Nome do produto    |
+| Body | Tipo     | Descrição                     | Query |
+| :------------- | :------- | :--------------------------------| ---------------------- |
+| `nome`         | `string` | **Required**. Nome do produto    | INSERT INTO produtos (nome, preco, id_categoria) VALUES (?, ?, ?) |
 | `preco`        | `float`  | **Required**. Preço do produto   |
 | `id_categoria` | `int`    | **Required**. ID da categoria    |
 
@@ -235,9 +245,9 @@ POST /produtos
 PUT /produtos/${id}
 ```
 
-| Paramêtro | Tipo  | Descrição                 |
-| :-------- | :-----| :---------------------------|
-| `id`      | `int` | **Required**. ID do produto  |
+| Paramêtro | Tipo  | Descrição                 | Query |
+| :-------- | :-----| :---------------------------| ---------------------- |
+| `id`      | `int` | **Required**. ID do produto  | UPDATE produtos SET nome = ?, preco = ?, id_categoria = ? WHERE id = ? |
 
 | Body | Tipo     | Descrição                     |
 | :------------- | :------- | :--------------------------------|
@@ -253,9 +263,9 @@ PUT /produtos/${id}
 DELETE /produtos/${id}
 ```
 
-| Paramêtro | Tipo  | Descrição                 |
-| :-------- | :-----| :---------------------------|
-| `id`      | `int` | **Required**. ID do produto  |
+| Paramêtro | Tipo  | Descrição                 | Query |
+| :-------- | :-----| :---------------------------| ---------------------- |
+| `id`      | `int` | **Required**. ID do produto  | DELETE FROM produtos WHERE id = ? |
 
 ---
 
@@ -267,9 +277,9 @@ DELETE /produtos/${id}
 GET /pedidos
 ```
 
-| Paramêtro | Tipo | Descrição                |
-| :-------- | :----| :---------------------------|
-| _None_    |      | Retorna todos os pedidos.   |
+| Paramêtro | Tipo | Descrição                | Query |
+| :-------- | :----| :---------------------------| ---------------------- |
+| _None_    |      | Retorna todos os pedidos.   | SELECT * FROM pedidos |
 
 ---
 
@@ -279,9 +289,9 @@ GET /pedidos
 POST /pedidos
 ```
 
-| Body | Tipo     | Descrição                     |
-| :------------- | :------- | :--------------------------------|
-| `id_cliente`   | `int`    | **Required**. ID do cliente      |
+| Body | Tipo     | Descrição                     | Query |
+| :------------- | :------- | :--------------------------------| ---------------------- |
+| `id_cliente`   | `int`    | **Required**. ID do cliente      | INSERT INTO pedidos (id_cliente) VALUES (?) |
 
 ---
 
@@ -291,9 +301,9 @@ POST /pedidos
 PUT /pedidos/${id}
 ```
 
-| Paramêtro | Tipo  | Descrição                |
-| :-------- | :-----| :--------------------------|
-| `id`      | `int` | **Required**. ID do pedido  |
+| Paramêtro | Tipo  | Descrição                | Query |
+| :-------- | :-----| :--------------------------| ---------------------- |
+| `id`      | `int` | **Required**. ID do pedido  | UPDATE pedidos SET id_cliente = ? WHERE id = ? |
 
 | Body | Tipo     | Descrição                     |
 | :------------- | :------- | :--------------------------------|
@@ -307,9 +317,9 @@ PUT /pedidos/${id}
 DELETE /pedidos/${id}
 ```
 
-| Paramêtro | Tipo  | Descrição                |
-| :-------- | :-----| :--------------------------|
-| `id`      | `int` | **Required**. ID do pedido  |
+| Paramêtro | Tipo  | Descrição                | Query |
+| :-------- | :-----| :--------------------------| ---------------------- |
+| `id`      | `int` | **Required**. ID do pedido  | DELETE FROM pedidos WHERE id = ? |
 
 ---
 
@@ -321,9 +331,9 @@ DELETE /pedidos/${id}
 GET /itens_pedido
 ```
 
-| Paramêtro | Tipo | Descrição                      | Query
-| :-------- | :----| :----------------------------------|
-| _None_    |      | Retorna todos os itens dos pedidos|
+| Paramêtro | Tipo | Descrição                      | Query |
+| :-------- | :----| :----------------------------------| ---------------------- |
+| _None_    |      | Retorna todos os itens dos pedidos| SELECT * FROM itens_pedido |
 
 ---
 
@@ -333,9 +343,9 @@ GET /itens_pedido
 POST /itens_pedido
 ```
 
-| Body | Tipo     | Descrição                          |
-| :------------- | :------- | :-------------------------------------|
-| `quantidade`   | `int`    | **Required**. Quantidade do item      |
+| Body | Tipo     | Descrição                          | Query |
+| :------------- | :------- | :-------------------------------------| ---------------------- |
+| `quantidade`   | `int`    | **Required**. Quantidade do item      | INSERT INTO itens_pedido (quantidade, id_pedido, id_produto) VALUES (?, ?, ?) |
 | `id_pedido`    | `int`    | **Required**. ID do pedido            |
 | `id_produto`   | `int`    | **Required**. ID do produto           |
 
@@ -347,9 +357,9 @@ POST /itens_pedido
 PUT /itens_pedido/${id}
 ```
 
-| Paramêtro | Tipo  | Descrição                       |
-| :-------- | :-----| :-----------------------------------|
-| `id`      | `int` | **Required**. ID do item do pedido |
+| Paramêtro | Tipo  | Descrição                       | Query |
+| :-------- | :-----| :-----------------------------------| ---------------------- |
+| `id`      | `int` | **Required**. ID do item do pedido | UPDATE itens_pedido SET quantidade = ? WHERE id = ? |
 
 | Body | Tipo     | Descrição                          |
 | :------------- | :------- | :-------------------------------------|
@@ -363,6 +373,6 @@ PUT /itens_pedido/${id}
 DELETE /itens_pedido/${id}
 ```
 
-| Paramêtro | Tipo  | Descrição                       |
-| :-------- | :-----| :-----------------------------------|
-| `id`      | `int` | **Required**. ID do item do pedido |
+| Paramêtro | Tipo  | Descrição                       | Query |
+| :-------- | :-----| :-----------------------------------| ---------------------- |
+| `id`      | `int` | **Required**. ID do item do pedido | DELETE FROM itens_pedido WHERE id = ? |

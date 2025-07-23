@@ -15,6 +15,10 @@ db_config = {
 def conectar_db():
     return psycopg2.connect(**db_config)
 
+# Rota inicial
+@app.route('/', methods=['GET'])
+def mensagem():
+    return jsonify({"mensagem": "API rodando!"})
 
 # CLIENTES - SELECT - Listar clientes
 @app.route('/clientes', methods=['GET'])
